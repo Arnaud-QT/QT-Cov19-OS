@@ -4,6 +4,7 @@
 
 let inputIniciales = document.getElementById('inputIniciales');
 let submitBtn = document.getElementById('submitBtn');
+let checkApruebo = document.getElementById('checkApruebo');
 
 function toInitials(input) {
     let final = "";
@@ -15,12 +16,19 @@ function toInitials(input) {
     return final
 }
 
+// Toggle btn attribute disabled
+
+function removeDisabled() {
+    if (checkApruebo.checked === true) {
+        submitBtn.removeAttribute('disabled', '')
+    } else if (checkApruebo.checked === false) {
+        submitBtn.setAttribute('disabled', '');
+    }
+}
 
 submitBtn.addEventListener('click', () => {
     inputIniciales.value = toInitials(inputIniciales.value);
 })
-
-
 
 
 // Form Logic
@@ -28,7 +36,7 @@ submitBtn.addEventListener('click', () => {
 function changeState(id) {
     switch (id) {
         case inputFebre:
-            if (id.value === 'febre') {
+            if (id.value === 'fiebre') {
                 infoFebre.removeAttribute('disabled');
             } else {
                 infoFebre.setAttribute('disabled', '')
